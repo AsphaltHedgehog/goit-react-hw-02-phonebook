@@ -3,21 +3,33 @@ import React, { Component } from "react";
 class ContactsList extends Component {
 
   renderContactsHandler = () => {
-    const { contacts } = this.props;
-    
+    const { contacts, handlerDeleteContact } = this.props;
+
     return contacts.map(({ id, name, number }) => (
-      <li key={id}>{name}: {number}</li>
+      <li key={id}>{name}: {number}
+        <button
+          type='button'
+          data-id={id}
+          onClick={handlerDeleteContact}
+        >Delete</button>
+      </li>
     ));
   };
 
   renderFilteredContactsHandler = () => {
-    const { filter, contacts } = this.props;
-    
+    const { filter, contacts, handlerDeleteContact } = this.props;
+
     const filteredList = contacts.filter((contact) =>
       contact.name.toLowerCase().includes(filter.toLowerCase()));
     
     return filteredList.map(({ id, name, number }) => (
-      <li key={id}>{name}: {number}</li>
+      <li key={id}>{name}: {number}
+        <button
+          type='button'
+          data-id={id}
+          onClick={handlerDeleteContact}
+        >Delete</button>
+      </li>
     ));
   }; 
 
@@ -28,7 +40,7 @@ class ContactsList extends Component {
           this.renderContactsHandler() :
           this.renderFilteredContactsHandler()}
       </ul>
-    );
+    )
   };
 };
 
