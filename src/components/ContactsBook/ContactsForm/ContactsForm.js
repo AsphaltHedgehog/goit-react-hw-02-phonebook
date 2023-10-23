@@ -1,4 +1,6 @@
-import React, {Component} from "react";
+import React, { Component } from "react";
+
+import PropTypes from "prop-types";
 
 
 class ContactsForm extends Component {
@@ -35,7 +37,7 @@ class ContactsForm extends Component {
   };
 
   //========================================================
-
+  
 
   render() {
     return (
@@ -71,6 +73,11 @@ class ContactsForm extends Component {
     );
   };
 };
+
+ContactsForm.propTypes = {
+  onSubmit: PropTypes.func
+}
+
 
 
 

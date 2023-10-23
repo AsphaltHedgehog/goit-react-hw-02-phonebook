@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 
+import PropTypes from "prop-types";
+
 class Filter extends Component {
 
     handlerInputChange = event => {
@@ -20,6 +22,11 @@ class Filter extends Component {
   };
 };
 
+
+Filter.propTypes = {
+  filter: PropTypes.string,
+  contactsFilterHandler: PropTypes.func,
+};
 
 
 export default Filter;
