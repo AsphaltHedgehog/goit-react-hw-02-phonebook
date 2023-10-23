@@ -2,8 +2,8 @@ import ContactsBook from "./ContactsBook/ContactsBook.js";
 
 export const App = () => {
   return (
-    <div >
+    <section >
       <ContactsBook />
-    </div>
+    </section>
   );
 };

@@ -2,6 +2,7 @@ import React, { Component } from "react";
 
 import PropTypes from "prop-types";
 
+import css from './contactform.module.css'
 
 class ContactsForm extends Component {
   state = {
@@ -42,32 +43,32 @@ class ContactsForm extends Component {
   render() {
     return (
     <div>
-      <form onSubmit={this.handleSubmit}>
-        <label>
+      <form onSubmit={this.handleSubmit} className={css.form}>
+        <label className={css.label}>
           Name
-          <br />
           <input
             type="text"
             name="name"
             value={this.state.name}
             onChange={this.handlerInputChange}
             placeholder="enter name"
-            required />
+            required
+            className={css.input}
+          />
           </label>
-        <br />
-          <label>
+          <label className={css.label}>
             Number
-            <br />
             <input
               type="tel"
               name="number"
               value={this.state.number}
               onChange={this.handlerInputChange}
               placeholder="enter telephone number"
-              required />
+              required
+              className={css.input}
+            />
         </label>
-        <br />
-        <button type='submit'>Add Contact</button>
+        <button type='submit' className={css.btn}>Add Contact</button>
       </form>
     </div>
     );

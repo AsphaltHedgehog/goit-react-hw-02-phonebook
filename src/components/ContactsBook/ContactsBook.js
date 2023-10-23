@@ -6,8 +6,7 @@ import ContactsList from './ContactsList/ContactsList.js'
 
 import Filter from "./Filter/Filter.js";
 
-
-import PropTypes from "prop-types";
+import css from './contactsbook.module.css'
 
 
 class ContactsBook extends Component {
@@ -63,24 +62,26 @@ class ContactsBook extends Component {
     const { filter, contacts } = state;
     
     return (
-      <div>
-        <h1>Phonebook</h1>
-        <ContactsForm onSubmit={contactSubmitHandler } />
+      <div className={css.container}>
+        <h1 className={css.header}>Phonebook</h1>
+        <ContactsForm onSubmit={contactSubmitHandler} />
         <div>
-          <h2>Contacts</h2>
+          <h2 className={css.title}>Contacts</h2>
           {contacts.length > 0 &&
-            <ul>
+            <div>
               <Filter
                 filter={filter}
                 contactsFilterHandler={contactsFilterChange}
               />
-              <ContactsList
-                contacts={contacts}
-                filter={filter}
-                handlerDeleteContact={handlerDeleteContact}
-              />
-            </ul>
-            }
+              <ul className={css.list}>
+                <ContactsList
+                  contacts={contacts}
+                  filter={filter}
+                  handlerDeleteContact={handlerDeleteContact}
+                />
+              </ul>
+            </div>
+          }
         </div>
       </div>
     );

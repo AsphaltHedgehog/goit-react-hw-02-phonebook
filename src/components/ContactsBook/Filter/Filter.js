@@ -2,6 +2,8 @@ import React, { Component } from "react";
 
 import PropTypes from "prop-types";
 
+import css from './filter.module.css'
+
 class Filter extends Component {
 
     handlerInputChange = event => {
@@ -17,6 +19,7 @@ class Filter extends Component {
         value={this.props.filter}
         onChange={this.handlerInputChange}
         placeholder="find contacts by name"
+        className={css.input}
       ></input>
     )
   };

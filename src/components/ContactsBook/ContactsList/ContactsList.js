@@ -2,17 +2,20 @@ import React, { Component } from "react";
 
 import PropTypes from "prop-types";
 
+import css from './contactlist.module.css'
+
 class ContactsList extends Component {
 
   renderContactsHandler = () => {
     const { contacts, handlerDeleteContact } = this.props;
 
     return contacts.map(({ id, name, number }) => (
-      <li key={id}>{name}: {number}
+      <li key={id} className={css.item}>{name}: {number}
         <button
           type='button'
           data-id={id}
           onClick={handlerDeleteContact}
+          className={css.btn}
         >Delete</button>
       </li>
     ));
@@ -25,11 +28,12 @@ class ContactsList extends Component {
       contact.name.toLowerCase().includes(filter.toLowerCase()));
     
     return filteredList.map(({ id, name, number }) => (
-      <li key={id}>{name}: {number}
+      <li key={id} className={css.item}>{name}: {number}
         <button
           type='button'
           data-id={id}
           onClick={handlerDeleteContact}
+          className={css.btn}
         >Delete</button>
       </li>
     ));
@@ -37,12 +41,12 @@ class ContactsList extends Component {
 
   render() {
     return (
-      <ul>
+      <div className={css.wrapper}>
         {this.props.filter === '' ?
           this.renderContactsHandler() :
           this.renderFilteredContactsHandler()}
-      </ul>
-    )
+      </div>
+    );
   };
 };
 
