@@ -7,9 +7,12 @@ import css from './contactlist.module.css'
 class ContactsList extends Component {
 
   renderContactsHandler = () => {
-    const { contacts, handlerDeleteContact } = this.props;
+    const { filter, contacts, handlerDeleteContact } = this.props;
+    
+    const filteredList = contacts.filter((contact) =>
+      contact.name.toLowerCase().includes(filter.toLowerCase()));
 
-    return contacts.map(({ id, name, number }) => (
+    return filteredList.map(({ id, name, number }) => (
       <li key={id} className={css.item}>{name}: {number}
         <button
           type='button'
@@ -21,30 +24,32 @@ class ContactsList extends Component {
     ));
   };
 
-  renderFilteredContactsHandler = () => {
-    const { filter, contacts, handlerDeleteContact } = this.props;
+  // renderFilteredContactsHandler = () => {
+  //   const { filter, contacts, handlerDeleteContact } = this.props;
 
-    const filteredList = contacts.filter((contact) =>
-      contact.name.toLowerCase().includes(filter.toLowerCase()));
+  //   const filteredList = contacts.filter((contact) =>
+  //     contact.name.toLowerCase().includes(filter.toLowerCase()));
     
-    return filteredList.map(({ id, name, number }) => (
-      <li key={id} className={css.item}>{name}: {number}
-        <button
-          type='button'
-          data-id={id}
-          onClick={() => handlerDeleteContact(id)}
-          className={css.btn}
-        >Delete</button>
-      </li>
-    ));
-  }; 
+  //   return filteredList.map(({ id, name, number }) => (
+  //     <li key={id} className={css.item}>{name}: {number}
+  //       <button
+  //         type='button'
+  //         data-id={id}
+  //         onClick={() => handlerDeleteContact(id)}
+  //         className={css.btn}
+  //       >Delete</button>
+  //     </li>
+  //   ));
+  // }; 
 
   render() {
     return (
       <div className={css.wrapper}>
-        {this.props.filter === '' ?
+        {this.renderContactsHandler()}
+        {/* {this.props.filter === '' ?
           this.renderContactsHandler() :
-          this.renderFilteredContactsHandler()}
+          this.renderFilteredContactsHandler()
+        } */}
       </div>
     );
   };
