@@ -14,7 +14,7 @@ class ContactsList extends Component {
         <button
           type='button'
           data-id={id}
-          onClick={handlerDeleteContact}
+          onClick={() => handlerDeleteContact(id)}
           className={css.btn}
         >Delete</button>
       </li>
@@ -32,7 +32,7 @@ class ContactsList extends Component {
         <button
           type='button'
           data-id={id}
-          onClick={handlerDeleteContact}
+          onClick={() => handlerDeleteContact(id)}
           className={css.btn}
         >Delete</button>
       </li>

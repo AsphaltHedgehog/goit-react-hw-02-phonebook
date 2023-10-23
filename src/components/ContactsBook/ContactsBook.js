@@ -38,8 +38,9 @@ class ContactsBook extends Component {
     this.setState({ [name]: value });
   };
 
-  handlerDeleteContact = (event) => {
-    const id = event.currentTarget.dataset.id;
+  handlerDeleteContact = (id) => {
+    console.log(id);
+    // const id = event.currentTarget.dataset.id;
 
     this.setState(prevState => {
       const newContactsList =
@@ -55,29 +56,25 @@ class ContactsBook extends Component {
   };
 
   render() {
-    const { handlerDeleteContact,
-      contactsFilterChange,
-      contactSubmitHandler,
-      state } = this;
-    const { filter, contacts } = state;
+    const { filter, contacts } = this.state;
     
     return (
       <div className={css.container}>
         <h1 className={css.header}>Phonebook</h1>
-        <ContactsForm onSubmit={contactSubmitHandler} />
+        <ContactsForm onSubmit={this.contactSubmitHandler} />
         <div>
           <h2 className={css.title}>Contacts</h2>
           {contacts.length > 0 &&
             <div>
               <Filter
                 filter={filter}
-                contactsFilterHandler={contactsFilterChange}
+                contactsFilterHandler={this.contactsFilterChange}
               />
               <ul className={css.list}>
                 <ContactsList
                   contacts={contacts}
                   filter={filter}
-                  handlerDeleteContact={handlerDeleteContact}
+                  handlerDeleteContact={this.handlerDeleteContact}
                 />
               </ul>
             </div>
